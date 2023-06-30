@@ -5,7 +5,7 @@ import numpy as np
 from os import listdir
 from fnmatch import filter
 import scipy.io as sio
-from multiprocessing import Pool, cpu_count
+#from multiprocessing import Pool, cpu_count
 from itertools import repeat
 
 import warnings
@@ -35,14 +35,10 @@ def matching(template_extr, mask_extr, temp_dir, threshold=0.38):
 		return -1
 
 	# Use all cores to calculate Hamming distances
-	args = zip(
-		sorted(listdir(temp_dir)),
-		repeat(template_extr),
-		repeat(mask_extr),
-		repeat(temp_dir),
-	)
-	with Pool(processes=cpu_count()) as pools:
-		result_list = pools.starmap(matchingPool, args)
+	result_list = []
+	for i in range(n_files):
+		args = (sorted(listdir(i)), repeat(template_extr), repeat(mask_extr), repeat(temp_dir))
+		result_list.append(matchingPool(args))
 
 	filenames = [result_list[i][0] for i in range(len(result_list))]
 	hm_dists = np.array([result_list[i][1] for i in range(len(result_list))])
