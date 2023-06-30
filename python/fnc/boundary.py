@@ -25,7 +25,7 @@ def searchInnerBound(img):
     # Integro-Differential operator coarse (jump-level precision)
     Y = img.shape[0]
     X = img.shape[1]
-    sect = X/4 		# Width of the external margin for which search is excluded
+    sect = X/10 		# Width of the external margin for which search is excluded
     minrad = 10
     maxrad = sect*0.8
     jump = 4 		# Precision of the coarse search, in pixels

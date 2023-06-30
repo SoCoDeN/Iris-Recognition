@@ -31,14 +31,17 @@ def matching(template_extr, mask_extr, temp_dir, threshold=0.38):
 	"""
 	# Get the number of accounts in the database
 	n_files = len(filter(listdir(temp_dir), '*.mat'))
+	print("tempdir",temp_dir)
+	print("n_files",n_files)
 	if n_files == 0:
 		return -1
 
 	# Use all cores to calculate Hamming distances
 	result_list = []
-	for i in range(n_files):
-		args = (sorted(listdir(i)), repeat(template_extr), repeat(mask_extr), repeat(temp_dir))
-		result_list.append(matchingPool(args))
+	for i in filter(listdir(temp_dir), '*.mat'):
+		#args = (i, repeat(template_extr), repeat(mask_extr), repeat(temp_dir))
+		#print(args)
+		result_list.append(matchingPool(i, template_extr, mask_extr, temp_dir))
 
 	filenames = [result_list[i][0] for i in range(len(result_list))]
 	hm_dists = np.array([result_list[i][1] for i in range(len(result_list))])
@@ -164,4 +167,5 @@ def matchingPool(file_temp_name, template_extr, mask_extr, temp_dir):
 
 	# Calculate the Hamming distance
 	hm_dist = calHammingDist(template_extr, mask_extr, template, mask)
+	print(file_temp_name, " " , hm_dist)
 	return (file_temp_name, hm_dist)

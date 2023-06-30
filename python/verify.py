@@ -16,7 +16,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--file", type=str,
                     help="Path to the file that you want to verify.")
 
-parser.add_argument("--temp_dir", type=str, default="./templates/",
+parser.add_argument("--temp_dir", type=str, default="./templates/CASIA1/",
 					help="Path to the directory containing templates.")
 
 parser.add_argument("--thres", type=float, default=0.38,
@@ -35,6 +35,7 @@ template, mask, file = extractFeature(args.file)
 
 
 # Matching
+print("temp dir",args.temp_dir)
 result = matching(template, mask, args.temp_dir, args.thres)
 
 if result == -1:

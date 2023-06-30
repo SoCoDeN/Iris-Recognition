@@ -17,7 +17,7 @@ from fnc.matching import calHammingDist
 #------------------------------------------------------------------------------
 #   Parameters
 #------------------------------------------------------------------------------
-CASIA1_DIR = "/Users/overbydl/Iris-Recognition/CASIA1"
+CASIA1_DIR = "../CASIA1"
 N_IMAGES = 4
 
 eyelashes_thresholds = np.linspace(start=10, stop=250, num=25)
@@ -62,7 +62,7 @@ files_dict = {}
 image_files = []
 for identity in identities:
     files = glob(os.path.join(CASIA1_DIR, identity, "*.*"))
-    #shuffle(files)
+    shuffle(files)
     files_dict[identity] = files[:N_IMAGES]
     image_files += files[:N_IMAGES]
 

@@ -2,6 +2,7 @@
 ##  Import
 ##-----------------------------------------------------------------------------
 import argparse, os
+from matplotlib import pyplot as plt
 from time import time
 from scipy.io import savemat
 
@@ -26,11 +27,13 @@ args = parser.parse_args()
 ##  Execution
 ##-----------------------------------------------------------------------------
 start = time()
-args.file = "../CASIA1/001_1_1.jpg"
+args.file = "../CASIA1/1/001_1_1.jpg"
 
 # Extract feature
 print('>>> Enroll for the file ', args.file)
 template, mask, file = extractFeature(args.file)
+
+plt.plot(template)
 
 # Save extracted feature
 basename = os.path.basename(file)
