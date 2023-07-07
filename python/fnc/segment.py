@@ -82,7 +82,7 @@ def segment(eyeim, eyelashes_thres=80, use_multiprocess=True):
 
 	# Mask the eye image, noise region is masked by NaN value
 	imwithnoise = eyeim.astype(float)
-	imwithnoise = imwithnoise + mask_top + mask_bot
+	imwithnoise = imwithnoise #+ mask_top + mask_bot
 
 	# For CASIA, eliminate eyelashes by threshold
 	ref = eyeim < eyelashes_thres

@@ -17,7 +17,7 @@ from fnc.extractFeature import extractFeature
 #------------------------------------------------------------------------------
 parser = argparse.ArgumentParser()
 
-parser.add_argument("--data_dir", type=str, default="../CASIA1", help="Path to the directory containing CASIA1 images.")
+parser.add_argument("--data_dir", type=str, default="././CASIA1", help="Path to the directory containing CASIA1 images.")
 
 parser.add_argument("--temp_dir", type=str, default="./templates/CASIA1", help="Path to the directory containing templates.")
 
