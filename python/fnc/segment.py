@@ -77,8 +77,9 @@ def segment(eyeim, eyelashes_thres=80, use_multiprocess=True):
 
 	# If not use_multiprocess
 	else:
-		mask_top = findTopEyelid(imsz, imageiris, irl, icl, rowp, rp)
-		mask_bot = findBottomEyelid(imsz, imageiris, rowp, rp, irl, icl)
+		print("commenting mask_top and mask_bot")
+		#mask_top = findTopEyelid(imsz, imageiris, irl, icl, rowp, rp)
+		#mask_bot = findBottomEyelid(imsz, imageiris, rowp, rp, irl, icl)
 
 	# Mask the eye image, noise region is masked by NaN value
 	imwithnoise = eyeim.astype(float)
